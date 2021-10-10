@@ -1,6 +1,6 @@
 #!/bin/bash
 
-workDir="/home/workspace/picotools/"
+workDir="$(pwd)/picotools/"
 RPiGithub="https://github.com/raspberrypi/"
 projName=(pico-sdk pico-examples pico-extras pico-playground)
 
