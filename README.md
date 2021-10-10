@@ -12,5 +12,8 @@ Where *picodev* is the name you give your image.
 ## Start the container
 Navigate to the directory you intend to develop in and start the container with:
 ```
-sudo docker run -it --name picodevenv --init -p 3000:3000 -v "$(pwd):/home/workspace:cached" picodev
+sudo docker run -d --init \
+--name picodevenv \
+-p 3000:3000 \
+-v "$(pwd):/home/workspace:cached" picodev
 ```
