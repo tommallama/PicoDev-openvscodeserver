@@ -22,15 +22,16 @@ RUN apt update && apt install --no-install-recommends -y \
     libnewlib-arm-none-eabi \
     libstdc++-arm-none-eabi-newlib \
     python3 \
+    && alias python=python3 \
     && rm -rf /var/lib/apt/lists/* 
-
+    
 WORKDIR /home/
 
 # Downloading the latest VSC Server release and extracting the release archive
 RUN wget https://github.com/gitpod-io/openvscode-server/releases/download/${RELEASE_TAG}/${RELEASE_TAG}-linux-x64.tar.gz && \
     tar -xzf ${RELEASE_TAG}-linux-x64.tar.gz && \
     rm -f ${RELEASE_TAG}-linux-x64.tar.gz
-
+    
 # Creating the user and usergroup
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USERNAME -m $USERNAME \
@@ -46,6 +47,12 @@ USER $USERNAME
 
 WORKDIR /home/workspace/
 
+# Get script to fetch and prep all the SDK related files
+RUN wget https://github.com/tommallama/PicoDev-openvscodeserver/blob/main/fetchandprep.sh \
+    && chmod +x fetchandprep.sh \
+    && ./fetchandprep.sh \
+    && rm -f ./fetchandprep.sh 
+
 ENV PICO_SDK_PATH=/home/workspace/picotools/pico-sdk
 ENV PICO_EXAMPLES_PATH=/home/workspace/picotools/pico-examples
 ENV PICO_EXTRAS_PATH=/home/workspace/picotools/pico-extras
@@ -60,3 +67,5 @@ ENV GIT_EDITOR="code --wait"
 ENV OPENVSCODE_SERVER_ROOT=/home/${RELEASE_TAG}-linux-x64
 
 EXPOSE 3000
+
+ENTRYPOINT ${OPENVSCODE_SERVER_ROOT}/server.sh
