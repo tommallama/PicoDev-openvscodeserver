@@ -6,7 +6,7 @@ projName=(pico-sdk pico-examples pico-extras pico-playground)
 
 # Create local addresses and remotes 
 for i in ${!projName[@]}; do
-  localRepo[$i]="${workDir}/${projName[$i]}"
+  localRepo[$i]="${workDir}${projName[$i]}"
   githubRepo[$i]="${RPiGithub}${projName[$i]}.git"
 done
 
