@@ -48,7 +48,7 @@ USER $USERNAME
 WORKDIR /home/workspace/
 
 # Get script to fetch and prep all the SDK related files
-RUN wget https://github.com/tommallama/PicoDev-openvscodeserver/blob/main/fetchandprep.sh \
+RUN wget https://raw.githubusercontent.com/tommallama/PicoDev-openvscodeserver/main/fetchandprep.sh \
     && chmod +x fetchandprep.sh \
     && ./fetchandprep.sh \
     && rm -f ./fetchandprep.sh 
