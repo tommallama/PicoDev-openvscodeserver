@@ -24,7 +24,7 @@ wget https://raw.githubusercontent.com/tommallama/PicoDev-openvscodeserver/main/
 ```
 
 ## Start the container
-Navigate to the directory you intend to develop in and start the container with:
+Navigate to the directory you intend to develop in (the one with the picotools folder) and start the container with:
 ```
 sudo docker run -d --init \
 --name picodevenv \
