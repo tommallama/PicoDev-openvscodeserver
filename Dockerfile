@@ -1,5 +1,5 @@
 # This template is in part from https://github.com/gitpod-io/openvscode-releases check back there and update this file as needed.
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Need a gitpod-io/openvscode-server/ target release here
 # i.e. openvscode-server-v1.61.0 OR openvscode-server-v1.60.2
