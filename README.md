@@ -16,7 +16,7 @@ Build the image using `docker build -t picodev .` (use *sudo* if needed)
 - Run the script
 - Clean up the script.
 The snippet below does all the things.
-```
+```bash
 wget https://raw.githubusercontent.com/tommallama/PicoDev-openvscodeserver/main/fetchandprep.sh \
 && chmod +x fetchandprep.sh \
 && ./fetchandprep.sh \
@@ -25,12 +25,14 @@ wget https://raw.githubusercontent.com/tommallama/PicoDev-openvscodeserver/main/
 
 ## Start the container
 Navigate to the directory you intend to develop in (the one with the picotools folder) and start the container with:
-```
+```bash
 sudo docker run -d --init \
 --name picodevenv \
--p 3000:3000 \
+-p XXXX:3000 \
 -v "$(pwd):/home/workspace:cached" picodev
 ```
+**Note:** Replace XXXX with your port of choice or just use 3000.
+
 
 ## Enjoy 
 Navigate to http://localhost:3000 if running locally or the appropriate address and port as configured
